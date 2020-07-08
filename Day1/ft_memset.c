@@ -19,10 +19,11 @@ void				*ft_memset(void *ptr, int x, size_t n)
 
 	i = 0;
 	str = ptr;
-	while (i < n)
+	while (n > 0)
 	{
 		str[i] = (unsigned char)x;
 		i++;
+		n--;
 	}
 	return (ptr);
 }

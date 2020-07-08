@@ -30,7 +30,7 @@ char	*ft_strrchr(const char *str, int c)
 			i++;
 	}
 	if (j != 0)
-		return (&str[j]);
+		return ((char*)&str[j]);
 	else
 		return (0);
 }
