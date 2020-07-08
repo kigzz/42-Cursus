@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// A remplacer par libft.h
-//int ft_strlen(char *str);
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, void *src, unsigned int size)
+void	*ft_memcpy(void *dest, void *src, size_t size)
 {
 	char	*dest2;
 	char	*src2;
