@@ -21,6 +21,7 @@ SRCS		=	ft_atoi.c \
                 ft_strnstr.c \
                 ft_strrchr.c \
                 ft_memmove.c \
+                ft_bzero.c \
 
 
 HEADER	=	include
