@@ -20,6 +20,7 @@ SRCS		=	ft_atoi.c \
                 ft_strchr.c \
                 ft_strnstr.c \
                 ft_strrchr.c \
+                ft_memmove.c \
 
 
 HEADER	=	include
