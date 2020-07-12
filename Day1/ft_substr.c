@@ -23,7 +23,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	else
 	{
-		while (len > 0)
+		while (len > 0 && s[i] != '\0')
 		{
 			dest[i] = s[start];
 			start++;
