@@ -6,7 +6,7 @@
 /*   By: bpouchep <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 17:51:11 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/12 17:51:12 by bpouchep         ###   ########.fr       */
+/*   Updated: 2020/07/12 18:40:44 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-
+	blabla
 }
