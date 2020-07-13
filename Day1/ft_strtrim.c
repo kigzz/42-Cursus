@@ -14,11 +14,10 @@
 // s'arrête à la première itération qui n'est pas dans le *set
 // Début + Fin
 // connaitre strlen de dest (Faire fonction?)
-// OU connaitre début + fin et substr?
+// OU connaitre début + fin et return substr?
 
 char		*ft_strtrim(char const *s1, char const *set)
 {
 	char	*dest;
-
 
 }
