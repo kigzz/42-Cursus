@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpouchep <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/12 17:51:11 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/12 18:42:52 by bpouchep         ###   ########.fr       */
+/*   Created: 2020/07/15 20:25:04 by bpouchep          #+#    #+#             */
+/*   Updated: 2020/07/15 20:25:18 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char		*ft_strjoin(char const *s1, char const *s2)
 {

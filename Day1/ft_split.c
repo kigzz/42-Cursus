@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpouchep <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 17:02:53 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/07 17:02:55 by bpouchep         ###   ########.fr       */
+/*   Created: 2020/07/15 20:24:14 by bpouchep          #+#    #+#             */
+/*   Updated: 2020/07/15 20:24:15 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
 
 int		is_sep(char c, char *charset)
