@@ -48,6 +48,8 @@ SRCS		=	ft_atoi.c \
 				ft_itoa.c \
 
 SRCS_BONUS  =   ft_lstnew.c \
+                ft_lstadd_front.c \
+
 
 OBJS		=	${SRCS:.c=.o}
 
