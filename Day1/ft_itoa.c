@@ -11,12 +11,15 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int			number_char(int n)
 {
 	int		len;
 
 	len = 0;
+	if (n < 0)
+		n = -n;
 	while (n > 0)
 	{
 		n /= 10;
@@ -43,14 +46,15 @@ char		*ft_itoa(int n)
 
 	len = number_char(n);
 	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * len + 1)))
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	else
 	{
 		if (n < 0)
 		{
-			str[i] = 0;
+			str[i] = '-';
 			i++;
+			n = -n;
 		}
 		while (len > 0)
 		{
