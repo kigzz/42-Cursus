@@ -56,11 +56,10 @@ char		*ft_itoa(int n)
 			i++;
 			n = -n;
 		}
-		while (len > 0)
+		while (len-- > 0)
 		{
-			str[i] = (n / ft_recursive_power(10, len - 1)) + '0';
-			n = n % ft_recursive_power(10, len - 1);
-			len--;
+			str[i] = n / ft_recursive_power(10, len) + '0';
+			n = n % ft_recursive_power(10, len);
 			i++;
 		}
 	}
