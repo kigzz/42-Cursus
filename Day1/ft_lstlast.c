@@ -10,22 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 t_list		*ft_lstlast(t_list *lst)
 {
-	t_list	*last_ele;
-
-	if (!(last_ele = (t_list*)malloc(sizeof(t_list))))
-		return (NULL);
-	else
-	{
-		while (lst->next != NULL)
-		{
-			lst = lst->next;
-		}
-		last_ele = lst;
-	}
-	return (last_ele);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
