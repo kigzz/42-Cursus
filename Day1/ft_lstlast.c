@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 20:19:54 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/15 20:20:00 by bpouchep         ###   ########.fr       */
+/*   Created: 2020/07/17 13:45:53 by bpouchep          #+#    #+#             */
+/*   Updated: 2020/07/17 13:47:15 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 
-int		ft_atoi(char *str)
+t_list		*ft_lstlast(t_list *lst)
 {
-	int	result;
-	int	i;
-	int	sign;
+	t_list	*last_ele;
 
-	i = 0;
-	result = 0;
-	sign = 1;
-	if (str[i] == '-')
+	if (!(last_ele = (t_list*)malloc(sizeof(t_list))))
+		return (NULL);
+	else
 	{
-		sign = -1;
-		i++;
+		while (lst->next != NULL)
+		{
+			lst = lst->next;
+		}
+		last_ele = lst;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
-	{
-		result = result * 10 + str[i] - '0';
-		i++;
-	}
-	return (result * sign);
+	return (last_ele);
 }
