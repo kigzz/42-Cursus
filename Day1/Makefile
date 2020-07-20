@@ -55,9 +55,9 @@ SRCS_BONUS  =   ft_lstnew.c \
                 ft_lstdelone.c \
 
 
-OBJS		=	${SRCS:.c=.o}
+OBJS		=	$(SRCS:.c=.o)
 
-OBJS_BONUS  =   ${SRCS_BONUS:.c=.o}
+OBJS_BONUS  =   $(SRCS_BONUS:.c=.o)
 
 CC          =	gcc
 
@@ -65,21 +65,21 @@ RM			=   rm -f
 
 CFLAGS		=   -Wall -Wextra -Werror
 
-LIB         =   ar rc ${NAME}
+LIB         =   ar rc $(NAME)
 
-all:		${NAME}
+all:		$(NAME)
 
 .c.o:
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-${NAME}:	${OBJS}
-				${LIB} ${OBJS}
+$(NAME):	$(OBJS)
+				$(LIB) $(OBJS)
 
-bonus:      ${OBJS} ${OBJS_BONUS}
-				${LIB} ${OBJS_BONUS} ${OBJS}
+bonus:      $(OBJS) $(OBJS_BONUS)
+				$(LIB) $(OBJS_BONUS) $(OBJS)
 
 clean:
-				${RM} ${OBJS} ${OBJS_BONUS}
+				$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean:		clean
 				${RM} ${NAME}
