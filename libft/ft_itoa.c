@@ -12,8 +12,9 @@
 
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-int			number_char(int n)
+int			number_char(long n)
 {
 	int		len;
 
@@ -43,26 +44,25 @@ char		*ft_itoa(int n)
 	char	*str;
 	int		len;
 	int		i;
+	long	nb;
 
-	len = number_char(n);
-	i = 0;
+	nb = n;
+	len = number_char(nb);
+	i = -1;
 	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	else
+	if (nb == 0)
+		str[++i] = '0';
+	if (nb < 0)
 	{
-		if (n < 0)
-		{
-			str[i] = '-';
-			i++;
-			n = -n;
-		}
-		while (len-- > 0)
-		{
-			str[i] = n / ft_recursive_power(10, len) + '0';
-			n = n % ft_recursive_power(10, len);
-			i++;
-		}
+		str[++i] = '-';
+		nb = -nb;
 	}
-	str[i] = '\0';
+	while (len-- > 0)
+	{
+		str[++i] = nb / ft_recursive_power(10, len) + '0';
+		nb = nb % ft_recursive_power(10, len);
+	}
+	str[++i] = '\0';
 	return (str);
 }
