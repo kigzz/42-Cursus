@@ -30,7 +30,7 @@ int					ft_isprint(int c);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memset(void *ptr, int x, size_t n);
-char				**ft_split(char *str, char *charset);
+char				**ft_split(char const *str, char c);
 char				*ft_strchr(const char *str, int c);
 char				*ft_strdup(char *src);
 size_t				ft_strlcat(char *dest, char *src, size_t size);
