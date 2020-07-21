@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			start(char const *s1, char const *set)
+static int	start(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
@@ -29,7 +29,7 @@ int			start(char const *s1, char const *set)
 	return (i - 1);
 }
 
-int			end(char const *s1, char const *set)
+static int	end(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;

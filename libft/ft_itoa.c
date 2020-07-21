@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int			number_char(long n)
+static int	number_char(long n)
 {
 	int		len;
 
@@ -29,7 +29,7 @@ int			number_char(long n)
 	return (len);
 }
 
-int			ft_recursive_power(int nb, int power)
+static int	ft_recursive_power(int nb, int power)
 {
 	if (power < 0)
 		return (0);
