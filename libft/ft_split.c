@@ -5,81 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 20:24:14 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/15 20:24:15 by bpouchep         ###   ########.fr       */
+/*   Created: 2020/07/21 14:48:27 by bpouchep          #+#    #+#             */
+/*   Updated: 2020/07/21 14:48:36 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int		is_sep(char c, char *charset)
-{
-	while (*charset != '\0')
-	{
-		if (c == *charset)
-			return (1);
-		charset++;
-	}
-	return (0);
-}
-
-int		count_word(char *str, char *charset)
+static int	count_word(char const *s, char c)
 {
 	int		count;
 	int		is_word;
+	int		i;
 
+	i = 0;
 	count = 0;
 	is_word = 0;
-	while (*str)
+	while (s[i] != '\0')
 	{
-		if (is_sep(*str, charset))
+		if (s[i] == c)
 			is_word = 0;
 		else if (is_word == 0)
 		{
 			is_word = 1;
 			count++;
 		}
-		str++;
+		i++;
 	}
 	return (count);
 }
 
-int		word_size(char *str, char *charset, int pos)
+static int	word_size(const char *s, char c, int pos)
 {
 	int		i;
 
 	i = 0;
-	while (str[pos])
+	while (s[pos] != '\0')
 	{
-		if (!is_sep(str[pos], charset))
+		if (s[pos] != c)
 			i++;
 		pos++;
 	}
 	return (i);
 }
 
-void	split_init(char **array, char *str, char *charset)
+static void	split(char **array, char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = -1;
 	j = 0;
 	k = 0;
-	while (str[++i] != '\0')
+	while (s[++i] != '\0')
 	{
-		if (!is_sep(str[i], charset))
+		if (s[i] != c)
 		{
 			if (k == 0)
-				if (!(array[j] = malloc(sizeof(char*) *
-										(word_size(str, charset, i) + 1))))
+				if (!(array[j] = (char*)malloc(sizeof(char*) *
+						(word_size(s, c, i) + 1))))
 					return ;
-			array[j][k] = str[i];
+			array[j][k] = s[i];
 			array[j][k + 1] = '\0';
 			k++;
 		}
-		if (is_sep(str[i], charset) && !is_sep(str[i + 1], charset) && k > 0)
+		if (s[i] == c && s[i + 1] != c && k > 0)
 		{
 			k = 0;
 			j++;
@@ -87,13 +78,13 @@ void	split_init(char **array, char *str, char *charset)
 	}
 }
 
-char	**ft_split(char *str, char *charset)
+char		**ft_split(char const *s, char c)
 {
-	char **array;
+	char	**array;
 
-	if (!(array = malloc(sizeof(char*) * (count_word(str, charset) + 1))))
+	if (!(array = (char **)malloc(sizeof(char *) * (count_word(s, c) + 1))))
 		return (NULL);
-	split_init(array, str, charset);
-	array[count_word(str, charset)] = NULL;
+	split(array, s, c);
+	array[count_word(s, c)] = NULL;
 	return (array);
 }
