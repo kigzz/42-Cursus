@@ -1,0 +1,7 @@
+Here double is a return type of function, p2f is name of the function pointer and (double, char) is an argument list
+of this function. Which means the first argument of this function is of double type and the second argument is char
+type.
+
+Lets understand this with the help of an example: Here we have a function sum that calculates the sum of two numbers
+and returns the sum. We have created a pointer f2p that points to this function, we are invoking the function using
+this function pointer f2p.
