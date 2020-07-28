@@ -60,7 +60,7 @@ size_t			ft_strlen(const char *str)
 	return (str - str2);
 }
 
-char	*ft_strdup(const char *src)
+char	*ft_strndup(const char *src, size_t n)
 {
 	char	*dest;
 	int		i;
@@ -69,10 +69,11 @@ char	*ft_strdup(const char *src)
 	dest = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
 	if (dest == NULL)
 		return (NULL);
-	while (src[i] != '\0')
+	while (src[i] != '\0' && n > 0)
 	{
 		dest[i] = src[i];
 		i++;
+		n--;
 	}
 	dest[i] = '\0';
 	return ((char*)dest);

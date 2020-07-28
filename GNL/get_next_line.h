@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 32
+# define BUFFER_SIZE 117
 #endif
 // Include test //
 
@@ -39,7 +39,7 @@ void	ft_putchar_fd(char c, int fd);
 //
 
 size_t	ft_strlen(const char *str);
-char	*ft_strdup(const char *src);
+char	*ft_strndup(const char *src, size_t n);
 char	*ft_strchr(const char *str, int c);
 
 #endif

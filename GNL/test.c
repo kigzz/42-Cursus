@@ -49,10 +49,12 @@ int main(void)
 	}
 	if (index == 0)
 		printf("EOF = %d\n", index);
-	free(buf);
-//	for (i = 0; i < count; i++)
-//	{
-//		printf("line %d = %s\n", i, line[i]);
-//	}
+//	free(buf); Quand malloc sera fait
+	for (i = 0; i < count; i++)
+	{
+		printf("line %d = %s\n", i, line[i]);
+		free(line[i]);
+	}
+	printf("line 0 = %s\n", line[0]);
 	return 0;
 }
