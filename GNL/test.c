@@ -41,14 +41,15 @@ int main(void)
 		printf("Index = %d. buf = %s\n", index, buf);
 //		printf("strchr : %s\n", ft_strchr(buf, 10));
 //	If rencontre \n, copier le reste du buffer dans line[i].
-//	Créer fonction strndup(const char s1, size_t n) | Si strlen(s1) > n, n = n et '\0' à la fin. n = strlen(s1) si longueur si n > strlen(s1)
-//	et '\0' à la fin.
+//	Créer fonction strndup(const char s1, size_t n) | Elle copiera jusqu'à BUFFER_SIZE
+//	Si strlen(s1) > n, n = n et '\0' à la fin. n = strlen(s1) si longueur si n > strlen(s1) et '\0' à la fin.
 		line[i] = ft_strdup(buf);
 		i++;
 		count++;
 	}
 	if (index == 0)
 		printf("EOF = %d\n", index);
+	free(buf);
 //	for (i = 0; i < count; i++)
 //	{
 //		printf("line %d = %s\n", i, line[i]);
