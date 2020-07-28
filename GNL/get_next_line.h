@@ -16,6 +16,9 @@
 # include <stdio.h>
 # include <unistd.h>
 
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+#endif
 // Include test //
 
 # include <fcntl.h>
@@ -37,5 +40,6 @@ void	ft_putchar_fd(char c, int fd);
 
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *src);
+char	*ft_strchr(const char *str, int c);
 
 #endif
