@@ -14,32 +14,46 @@
 
 int				get_next_line(int fd, char **line)
 {
-	static char	*buf;
+//	static char	*tmp;
+	char		*buf;
 	int			index;
-	int			i;
+	static int			i;
 
-	i = 0;
-	fd = open("42", O_RDWR);
-	printf("fd = %d\n", fd);
-	if (!(buf = malloc((BUFFER_SIZE + 1) * sizeof(char))))
+//	fd = open("42", O_RDWR);
+//	printf("fd = %d\n", fd);
+//	printf("i = %d\n", i);
+	if (!(buf = malloc((BUFFER_SIZE + 1) * sizeof(char))) && !line && BUFFER_SIZE <= 0)
 		return (-1);
-	while ((index = read(fd, buf, BUFFER_SIZE)) && ft_strchr(buf, '\n') == NULL)
+	while ((index = read(fd, buf, BUFFER_SIZE)) && !ft_strchr(buf, '\n'))
 	{
+//		printf("Index = %d\n", index);
 		buf[index] = '\0';
-		line[i] = ft_strndup(buf, BUFFER_SIZE);	// comment dire "stop toi quand t'as trouvé \n" ?
+		line[i] = ft_strndup(buf, BUFFER_SIZE);	// comment dire "reprends au char après \n"?
+//		printf("Line[%d] = %s\n", i, line[i]);
 		i++;
 	}
+	if (ft_strchr(buf, '\n') != NULL)
+		line[i] = "Ta mère";//ft_strjoin(nl + 1, buf);
+//	free(buf);
 	return (0);
 }
 
 int				main(void)
 {
 	char **tmp;
+	int fd;
 	tmp = malloc(9999);
-	get_next_line(3, tmp);
-	for (int i = 0; i < 16; i++)
+	fd = open("42", O_RDWR);
+	printf("fd = %d\n", fd);
+	for (int i = 0; i < 12; i++)
 	{
+		get_next_line(fd, tmp);
+//		printf("_____________\n");
 		printf("%d. %s\n", i, tmp[i]);
 	}
+//	for (int i = 0; i < 4; i++)
+//	{
+//		printf("%d. %s\n", i, tmp[i]);
+//	}
 	return (0);
 }

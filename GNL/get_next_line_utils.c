@@ -63,20 +63,50 @@ size_t			ft_strlen(const char *str)
 char	*ft_strndup(const char *src, size_t n)
 {
 	char	*dest;
-	int		i;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	dest = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
-	if (dest == NULL)
+	if (ft_strlen(src) > n)
+		len = n;
+	else
+		len = ft_strlen(src);
+	if (!(dest = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while (src[i] != '\0' && n > 0)
+	while (i < len)
 	{
-		dest[i] = src[i];
+		dest[i] = *src++;
 		i++;
-		n--;
 	}
 	dest[i] = '\0';
 	return ((char*)dest);
+}
+
+char		*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*dest;
+	int		i;
+	int		end;
+
+	i = 0;
+	end = 0;
+	if (!(dest = (char*)malloc(ft_strlen(s1) + ft_strlen(s2))))
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		dest[i] = s1[i];
+		i++;
+		end = i;
+	}
+	i = 0;
+	while (s2[i] != '\0')
+	{
+		dest[end] = s2[i];
+		i++;
+		end++;
+	}
+	dest[end] = '\0';
+	return (dest);
 }
 
 char	*ft_strchr(const char *str, int c)

@@ -41,5 +41,6 @@ void	ft_putchar_fd(char c, int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strndup(const char *src, size_t n);
 char	*ft_strchr(const char *str, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
