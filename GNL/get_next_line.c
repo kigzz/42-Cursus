@@ -29,11 +29,18 @@ int				get_next_line(int fd, char **line)
 //		printf("Index = %d\n", index);
 		buf[index] = '\0';
 		line[i] = ft_strndup(buf, BUFFER_SIZE);	// comment dire "reprends au char après \n"?
-//		printf("Line[%d] = %s\n", i, line[i]);
+//		printf("Index = %d | Line[%d] = %s\n", index, i, line[i]);
 		i++;
 	}
-	if (ft_strchr(buf, '\n') != NULL)
-		line[i] = "Ta mère";//ft_strjoin(nl + 1, buf);
+	char *n1 = ft_strchr(buf, '\n');
+	printf("strchr = %s\n", n1);
+	if (ft_strchr(buf, '\n')) {
+		printf("index = %d\n", index);
+		printf("buf = %s\n", buf);
+		printf("strjoin = %s\n", ft_strjoin(buf, n1));
+	}
+//	if (ft_strchr(buf, '\n') != NULL)
+//		line[i] = "Ta mère";//ft_strjoin(nl + 1, buf);
 //	free(buf);
 	return (0);
 }
@@ -45,11 +52,11 @@ int				main(void)
 	tmp = malloc(9999);
 	fd = open("42", O_RDWR);
 	printf("fd = %d\n", fd);
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		get_next_line(fd, tmp);
 //		printf("_____________\n");
-		printf("%d. %s\n", i, tmp[i]);
+//		printf("%d. %s\n", i, tmp[i]);
 	}
 //	for (int i = 0; i < 4; i++)
 //	{
