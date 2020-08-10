@@ -33,11 +33,13 @@ int				get_next_line(int fd, char **line)
 		i++;
 	}
 	char *n1 = ft_strchr(buf, '\n');
-	printf("strchr = %s\n", n1);
+	printf("strchr = %s\n-------\n", n1);
 	if (ft_strchr(buf, '\n')) {
 		printf("index = %d\n", index);
 		printf("buf = %s\n", buf);
 		printf("strjoin = %s\n", ft_strjoin(buf, n1));
+		printf("strndup = %s\n", ft_strndup(buf, n1 - buf));
+		printf("strchr - buf = %ld\n", n1 - buf);				//	Différence de nombre de char de n1 par à rapport à buf;
 	}
 //	if (ft_strchr(buf, '\n') != NULL)
 //		line[i] = "Ta mère";//ft_strjoin(nl + 1, buf);
