@@ -12,44 +12,6 @@
 
 #include "get_next_line.h"
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	long number;
-
-	number = n;
-	if (number < 0)
-	{
-		ft_putchar_fd('-', fd);
-		number *= -1;
-	}
-	if (number > 9)
-		ft_putnbr_fd(number / 10, fd);
-	ft_putchar_fd(number % 10 + 48, fd);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
-}
-
 size_t			ft_strlen(const char *str)
 {
 	const char	*str2;
@@ -90,7 +52,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	end = 0;
-	if (!(dest = (char*)malloc(ft_strlen(s1) + ft_strlen(s2))))
+	if (!(dest = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
 		return (NULL);
 	while (s1[i] != '\0')
 	{

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/27 19:06:24 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/27 19:06:41 by bpouchep         ###   ########.fr       */
+/*   Created: 2020/08/21 18:46:56 by bpouchep          #+#    #+#             */
+/*   Updated: 2020/08/21 18:47:25 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,69 @@
 
 int				get_next_line(int fd, char **line)
 {
-//	static char	*tmp;
+	static char	*tmpline;
 	char		*buf;
-	int			index;
-	static int			i;
+	ssize_t		index;
+	static int	i;
+	static char *nl;
 
+	if (tmpline == NULL)
+		tmpline = "";
+	printf("strchr = %s\n-------\n", nl);
+//		printf("Index = %d | Line[%d] = %s\n", index, i, line[i]);
 //	fd = open("42", O_RDWR);
 //	printf("fd = %d\n", fd);
 //	printf("i = %d\n", i);
-	if (!(buf = malloc((BUFFER_SIZE + 1) * sizeof(char))) && !line && BUFFER_SIZE <= 0)
+	if (!(buf = malloc((BUFFER_SIZE) * sizeof(char))) || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	while ((index = read(fd, buf, BUFFER_SIZE)) && !ft_strchr(buf, '\n'))
+	while (nl)
 	{
-//		printf("Index = %d\n", index);
+		tmpline = nl + 1;
+		if (ft_strchr(tmpline, '\n'))				//CONDITION A REVOIR !!
+		{
+			printf("tmpline if NL présent : %s\n", tmpline);
+			line[i] = ft_strndup(tmpline, ft_strchr(tmpline, '\n') - tmpline);
+			printf("line : %s\n", line[i]);
+			i++;
+		}
+		nl = ft_strchr(tmpline, '\n');
+		printf("nl if nl != null : %s\n", nl);
+	}
+	while ((index = read(fd, buf, BUFFER_SIZE)) && !(nl = ft_strchr(buf, '\n')))
+	{
+		if (index == -1) {
+			return (-1);
+		}
 		buf[index] = '\0';
-		line[i] = ft_strndup(buf, BUFFER_SIZE);	// comment dire "reprends au char après \n"?
-//		printf("Index = %d | Line[%d] = %s\n", index, i, line[i]);
-		i++;
-	}
-	char *n1 = ft_strchr(buf, '\n');
-	printf("strchr = %s\n-------\n", n1);
-	if (ft_strchr(buf, '\n')) {
-		printf("index = %d\n", index);
 		printf("buf = %s\n", buf);
-		printf("strjoin = %s\n", ft_strjoin(buf, n1));
-		printf("strndup = %s\n", ft_strndup(buf, n1 - buf));
-		printf("strchr - buf = %ld\n", n1 - buf);				//	Différence de nombre de char de n1 par à rapport à buf;
+		printf("before tmpline : %s\n", tmpline);
+		if (!tmpline) {
+			tmpline = ft_strndup(buf, BUFFER_SIZE);
+			printf("if !(tmpline) = %s\n", tmpline);
+		}
+		else {
+			tmpline = ft_strjoin(tmpline, buf);
+			printf("if (tmpline) = %s\n", tmpline);
+		}
 	}
-//	if (ft_strchr(buf, '\n') != NULL)
-//		line[i] = "Ta mère";//ft_strjoin(nl + 1, buf);
-//	free(buf);
+
+//	printf("strchr = %s\n-------\n", nl);
+	if (ft_strchr(buf, '\n'))
+	{
+//		printf("index = %ld\n", index);
+//		printf("i = %d\n", i);
+//		printf("buf = %s\n", buf);
+//		printf("strjoin = %s\n", ft_strjoin(buf, nl));
+//		printf("strndup = %s\n", ft_strndup(buf, nl - buf));
+//		printf("strchr - buf = %ld\n", nl - buf);				//	Différence de nombre de char de nl par à rapport à buf;
+//		tmpline = ft_strjoin(tmpline, (ft_strndup(buf, nl - buf)));
+		tmpline = ft_strjoin(tmpline, ft_strndup(buf, nl - buf));
+	}
+//	printf("5index = %ld\n", index);
+	printf("index = %ld\n", index);
+	printf("FINAL TMPLINE = %s\n", tmpline);
+	line[i] = tmpline;
+	i++;
 	return (0);
 }
 
@@ -51,14 +84,15 @@ int				main(void)
 {
 	char **tmp;
 	int fd;
-	tmp = malloc(9999);
+	tmp = malloc(2147483647);
 	fd = open("42", O_RDWR);
 	printf("fd = %d\n", fd);
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		get_next_line(fd, tmp);
 //		printf("_____________\n");
-//		printf("%d. %s\n", i, tmp[i]);
+		printf("%d. %s\n", i, tmp[i]);
+//		printf("%d\n", get_next_line(fd, tmp));
 	}
 //	for (int i = 0; i < 4; i++)
 //	{
