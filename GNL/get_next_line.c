@@ -10,6 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+ * Problème de condition de retour.
+ * Copie une ligne en trop quand BUFFER_SIZE trop grand
+ * Factoriser la fonction gnl pour qu'elle fasse moins de 25 lignes.
+ * */
+
 #include "get_next_line.h"
 
 int				get_next_line(int fd, char **line)
