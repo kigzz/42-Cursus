@@ -22,7 +22,7 @@ size_t			ft_strlen(const char *str)
 	return (str - str2);
 }
 
-char	*ft_strndup(const char *src, size_t n)
+char			*ft_strndup(const char *src, size_t n)
 {
 	char	*dest;
 	size_t	i;
@@ -44,7 +44,7 @@ char	*ft_strndup(const char *src, size_t n)
 	return ((char*)dest);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
 	int		i;
@@ -71,7 +71,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (dest);
 }
 
-char	*ft_strchr(const char *str, int c)
+char			*ft_strchr(const char *str, int c)
 {
 	int i;
 

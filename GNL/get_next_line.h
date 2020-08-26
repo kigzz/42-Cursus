@@ -12,20 +12,17 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 117
+# endif
+
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 117
-#endif
-// Include test //
-
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-
-//
 
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *str);
