@@ -28,7 +28,7 @@ int				get_next_line(int fd, char **line)
 
 	if (!tmpline)
 		tmpline = "";
-	if (!(buffer = malloc((BUFFER_SIZE) * sizeof(char))) || !line
+	if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(char))) || !line
 			|| BUFFER_SIZE <= 0)
 		return (-1);
 	if (nl)
@@ -52,7 +52,7 @@ int				get_next_line(int fd, char **line)
 	}
 	if (nl)
 		tmpline = ft_strjoin(tmpline, ft_strndup(buffer, nl - buffer));
-	else if (tmpline == line[i - 1])
+	else if (i > 0 && !ft_strcmp(line[i - 1], tmpline))
 		return (0);
 	line[i] = tmpline;
 	i++;
@@ -70,7 +70,7 @@ int				main(void)
 	for (int i = 0; i < 8; i++)
 	{
 		j = get_next_line(fd, tmp);
-		printf("%d. %s\n", i, tmp[i]);
+//		printf("%d. %s\n", i, tmp[i]);
 		printf("return gnl = %d\n", j);
 	}
 	printf("_____________\n");

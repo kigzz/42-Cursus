@@ -89,3 +89,21 @@ char			*ft_strchr(const char *str, int c)
 		return ((char*)&str[i]);
 	return (0);
 }
+
+int 		ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (*s1 == '\0')
+		return ('\0' - *s2);
+	else if (*s2 == '\0')
+		return (*s1 - '\0');
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
