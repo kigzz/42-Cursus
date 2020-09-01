@@ -52,60 +52,70 @@
 	return (1);
 }*/
 
-int 			get_next_line(int fd, char **line)
-{
-	static char 	*tmpline;
-	char			*buffer;
-	ssize_t 		index;
-	char 			*nl;
+int 			get_next_line(int fd, char **line) {
+	static char *tmpline;
+	char *buffer;
+	ssize_t index;
+	char *nl;
 
-	if (tmpline == NULL)
-		tmpline = "\0";
 	if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(char))) || !line || BUFFER_SIZE <= 0) {
 		return (-1);
 	}
 //	printf("tmpline = %s\n", tmpline);
-	while (!(nl = ft_strchr(tmpline, '\n')) && (index = read(fd, buffer, BUFFER_SIZE)) != 0)
+	while ((!(nl = ft_strchr(tmpline, '\n')) &&
+			(index = read(fd, buffer, BUFFER_SIZE)) != 0))
 	{
 //		printf("0buffer =%s\n", buffer);
-		if (index == -1)
-		{
+		if (index == -1) {
 			free(buffer);
 			return (-1);
 		}
 		buffer[index] = '\0';
-		tmpline = ft_strjoin(tmpline, buffer);
+		if (tmpline)
+			tmpline = ft_strjoin(tmpline, buffer);
+		else
+			tmpline = ft_strndup(buffer, index);
 //		printf("tmpline = %s\n", tmpline);
 	}
 //	printf("NEW LINE = %s\n", nl);
-	if (nl)
-	{
-//		printf("3buffer nl = %s\n", buffer);
+	if (nl) {
+//		printf("tmplinenl = %s\n", tmpline);
+//		printf("1nl = %s\n", nl);
 		*line = ft_strndup(tmpline, nl - tmpline);
 		tmpline = ft_strndup(nl + 1, BUFFER_SIZE);
 //		printf("tmpline after strjoin = %s\n", tmpline);
 		free(buffer);
 		return (1);
 	}
-	*line = tmpline;
-	free(buffer);
+//	printf("eof line = %s\n", *line);
+//	printf("eof tmpline = %s\n", tmpline);
+//	printf("strcmp eof line/tmpline = %d\n", ft_strcmp(*line, tmpline));
+	if (tmpline)
+		*line = tmpline;
+	else
+		*line = ft_strndup("\0", 1);
+	tmpline = NULL;
+//	free(buffer);
+//	free(tmpline);
 	return (0);
-
 }
-int				main(void)
+
+/*
+int main(void)
 {
 	char **tmp;
 	int fd;
-//	int j = 0;
+	int j = 0;
 	tmp = malloc(2147483647);
 	fd = open("42", O_RDWR);
 	printf("fd = %d\n", fd);
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 9; i++)
 	{
-		get_next_line(fd, tmp);
-		printf("--> line = %s\n", tmp[0]);
-//		printf("--> return gnl = %d\n", j);
+		j = get_next_line(fd, tmp);
+		printf("%d. %s\n", i, tmp[0]);
+		printf("----> return gnl = %d\n", j);
 //		printf("_____________\n");
 	}
 	return (0);
 }
+*/

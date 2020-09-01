@@ -76,6 +76,8 @@ char			*ft_strchr(const char *str, int c)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (str[i] == (char)c)
@@ -90,15 +92,11 @@ char			*ft_strchr(const char *str, int c)
 	return (0);
 }
 
-/*int				ft_strcmp(const char *s1, const char *s2)
+int				ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;
 
 	i = 0;
-	if (*s1 == '\0')
-		return ('\0' - *s2);
-	else if (*s2 == '\0')
-		return (*s1 - '\0');
 	while (s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
@@ -106,4 +104,4 @@ char			*ft_strchr(const char *str, int c)
 		i++;
 	}
 	return (0);
-}*/
+}
