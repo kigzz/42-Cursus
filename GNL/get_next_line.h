@@ -6,7 +6,7 @@
 /*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 16:37:58 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/24 16:38:34 by bpouchep         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:43:45 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 117
+#  define BUFFER_SIZE 32
 # endif
 
 # include <stdlib.h>

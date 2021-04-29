@@ -6,7 +6,7 @@
 /*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 16:37:48 by bpouchep          #+#    #+#             */
-/*   Updated: 2020/07/24 16:37:49 by bpouchep         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:43:58 by bpouchep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,19 @@ char			*ft_strndup(const char *src, size_t n)
 
 char			*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*dest;
-	int		i;
-	int		end;
+	char			*str;
+	size_t			i;
+	const size_t	str_len = ft_strlen(s1) + ft_strlen(s2);
 
-	i = 0;
-	end = 0;
-	if (!(dest = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char))))
+	if (!(str = malloc((str_len + 1) * sizeof(char))))
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		dest[i] = s1[i];
-		i++;
-		end = i;
-	}
 	i = 0;
-	while (s2[i] != '\0')
-	{
-		dest[end] = s2[i];
-		i++;
-		end++;
-	}
-	dest[end] = '\0';
-	return (dest);
+	while (*s1)
+		str[i++] = *s1++;
+	while (*s2)
+		str[i++] = *s2++;
+	str[i] = '\0';
+	return (str);
 }
 
 char			*ft_strchr(const char *str, int c)
