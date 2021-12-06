@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printft.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpouchep <bpouchep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -26,7 +26,7 @@ static int	ft_parse(char c, va_list arg)
 	{
 		i = ft_putstr ("0x");
 		i += ft_putbase_address (va_arg (arg, unsigned long int),
-				s"0123456789abcdef");
+				"0123456789abcdef");
 	}
 	else if (c == 'd' || c == 'i')
 		i = ft_putbase (va_arg (arg, int), "0123456789");
